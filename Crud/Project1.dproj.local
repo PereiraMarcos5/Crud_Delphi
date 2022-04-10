@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/03/30 23:27:26.000.896,=C:\Users\marco\OneDrive\Delphi\Unit1.pas</Transaction>
+    <Transaction>2022/03/31 00:15:52.000.023,C:\Users\marco\OneDrive\Delphi\Unit1.pas=C:\Users\marco\OneDrive\Delphi\Crud\Unit1.pas</Transaction>
+    <Transaction>2022/03/31 00:15:52.000.023,C:\Users\marco\OneDrive\Delphi\Unit1.dfm=C:\Users\marco\OneDrive\Delphi\Crud\Unit1.dfm</Transaction>
+    <Transaction>2022/03/31 00:16:04.000.983,C:\Users\marco\OneDrive\Delphi\Project1.dproj=C:\Users\marco\OneDrive\Delphi\Crud\Project1.dproj</Transaction>
+    <Transaction>2022/04/02 13:22:22.000.945,C:\Users\marco\OneDrive\Delphi\Crud\Unit1.pas=C:\Users\marco\OneDrive\Delphi\Crud\TelaLogin.pas</Transaction>
+    <Transaction>2022/04/02 13:22:22.000.945,C:\Users\marco\OneDrive\Delphi\Crud\Unit1.dfm=C:\Users\marco\OneDrive\Delphi\Crud\TelaLogin.dfm</Transaction>
+    <Transaction>2022/04/02 13:22:38.000.342,=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.pas</Transaction>
+    <Transaction>2022/04/02 13:22:50.000.132,C:\Users\marco\OneDrive\Delphi\Crud\Unit2.dfm=C:\Users\marco\OneDrive\Delphi\Crud\TelaCadastroLogin.dfm</Transaction>
+    <Transaction>2022/04/02 13:22:50.000.132,C:\Users\marco\OneDrive\Delphi\Crud\Unit2.pas=C:\Users\marco\OneDrive\Delphi\Crud\TelaCadastroLogin.pas</Transaction>
+    <Transaction>2022/04/04 23:34:57.693,=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.pas</Transaction>
+    <Transaction>2022/04/04 23:35:42.448,C:\Users\marco\OneDrive\Delphi\Crud\Principal.dfm=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.dfm</Transaction>
+    <Transaction>2022/04/04 23:35:42.448,C:\Users\marco\OneDrive\Delphi\Crud\Principal.pas=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="TelaLogin.pas"/>
+    <File Path="TelaLogin.dfm"/>
+    <File Path="TelaCadastroLogin.pas"/>
+    <File Path="TelaCadastroLogin.dfm"/>
+    <File Path="Principal.pas"/>
+    <File Path="Principal.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

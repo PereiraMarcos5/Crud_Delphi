@@ -1,0 +1,42 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Data.Win.ADODB;
+
+type
+  TForm1 = class(TForm)
+    lbNomeUsuario: TLabel;
+    lb_Senha: TLabel;
+    edit_Nome: TEdit;
+    edit_Senha: TEdit;
+    Button1: TButton;
+    btn_Cadastro: TButton;
+    ADOConnection1: TADOConnection;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+  var conexao : AnsiString;
+  //SetLength(conexao, 400);
+  conexao := 'Provider=SQLNCLI11.1;Integrated Security=SSPI;Persist Security Info=False;User ID="";Initial Catalog=projCrud;Data Source=MARCOS-PC\SQLEXPRESS;Use Procedure for Prepare=1;Auto Translate=True;Packet '+'Size=4096;Workstation ID=MARCOS-PC;Initial File Name="";Use Encryption for Data=False;Tag with column collation when possible=False;MARS Connection=False;DataTypeCompatibility=0;Trust Server Certificate=False;Server SPN="";Application Intent=READWRITE';
+
+  ADOConnection1.ConnectionString := conexao;
+  ADOConnection1.Connected := true;
+end;
+
+end.

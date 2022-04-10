@@ -1,0 +1,115 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 258
+  ClientWidth = 304
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  OnShow = FormShow
+  TextHeight = 15
+  object lbNomeUsuario: TLabel
+    Left = 48
+    Top = 40
+    Width = 79
+    Height = 15
+    Caption = 'Nome Usu'#225'rio:'
+  end
+  object lb_Senha: TLabel
+    Left = 48
+    Top = 120
+    Width = 35
+    Height = 15
+    Caption = 'Senha:'
+  end
+  object edit_Nome: TEdit
+    Left = 48
+    Top = 64
+    Width = 209
+    Height = 23
+    TabOrder = 0
+  end
+  object edit_Senha: TEdit
+    Left = 48
+    Top = 144
+    Width = 209
+    Height = 23
+    TabOrder = 1
+  end
+  object btn_Entrar: TButton
+    Left = 192
+    Top = 200
+    Width = 75
+    Height = 41
+    Caption = 'Entrar'
+    TabOrder = 2
+    OnClick = btn_EntrarClick
+  end
+  object btn_Cadastro: TButton
+    Left = 111
+    Top = 200
+    Width = 75
+    Height = 39
+    Caption = 'Cadastre-se'
+    TabOrder = 3
+    OnClick = btn_CadastroClick
+  end
+  object Qaux: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <>
+    Left = 264
+    Top = 8
+  end
+  object ADOConnection1: TADOConnection
+    ConnectionString = 
+      'Provider=SQLNCLI11.1;Integrated Security=SSPI;Persist Security I' +
+      'nfo=False;User ID="";Initial Catalog=projCrud;Data Source=MARCOS' +
+      '-PC\SQLEXPRESS;Initial File Name="";Server SPN=""'
+    Provider = 'SQLNCLI11.1'
+    Left = 232
+    Top = 8
+  end
+  object SQLDataSet1: TSQLDataSet
+    Params = <>
+    Left = 176
+    Top = 8
+  end
+  object DataSetProvider1: TDataSetProvider
+    Left = 144
+    Top = 8
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 112
+    Top = 8
+  end
+  object SQLConnection1: TSQLConnection
+    ConnectionName = 'MSSQLConnection'
+    DriverName = 'MSSQL'
+    LoginPrompt = False
+    Params.Strings = (
+      'SchemaOverride=sa.dbo'
+      'DriverName=MSSQL'
+      'HostName=ServerName'
+      
+        'DataBase=C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRES' +
+        'S\MSSQL\DATA'
+      'User_Name=user'
+      'Password=password'
+      'BlobSize=-1'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'IsolationLevel=ReadCommitted'
+      'OS Authentication=False'
+      'Prepare SQL=False'
+      'ConnectTimeout=60'
+      'Mars_Connection=False')
+    Left = 272
+    Top = 80
+  end
+end

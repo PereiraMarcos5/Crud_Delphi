@@ -1,0 +1,68 @@
+unit TelaLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB ,Data.Win.ADODB, TelaCadastroLogin;
+
+type
+  TForm1 = class(TForm)
+    lbNomeUsuario: TLabel;
+    lb_Senha: TLabel;
+    edit_Nome: TEdit;
+    edit_Senha: TEdit;
+    btn_Entrar: TButton;
+    btn_Cadastro: TButton;
+    Qaux: TADOQuery;
+    ADOConnection1: TADOConnection;
+    procedure FormShow(Sender: TObject);
+    procedure btn_CadastroClick(Sender: TObject);
+    procedure btn_EntrarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.btn_CadastroClick(Sender: TObject);
+begin
+//          TelaCadastro := TelaCadastro.Create(Application);
+          TelaCadastro.ShowModal;
+end;
+
+procedure TForm1.btn_EntrarClick(Sender: TObject);
+begin
+      var user := '';
+      var senha := 0;
+      Qaux.SQL.Text := 'SELECT * from login';
+      Qaux.Parameters.ParamByName('usuario').Value := user;
+      Qaux.Parameters.ParamByName('senha').Value := senha;
+
+
+      if (user = edit_Nome.Text) AND (IntToStr(senha) = edit_Senha.Text) then
+
+      ShowMessage('Entrou com Sucesso')
+
+      Else
+      ShowMessage('Senha ou Usuario incorretos')
+end;
+
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+
+  ADOConnection1.ConnectionString := 'Provider=SQLNCLI11.1;Integrated Security=SSPI;Persist Security Info=False;User ID="";Initial Catalog=projCrud;Data Source=MARCOS-PC\SQLEXPRESS;Initial File Name="";Server SPN=""';
+  ADOConnection1.Connected := true;
+
+
+end;
+
+end.

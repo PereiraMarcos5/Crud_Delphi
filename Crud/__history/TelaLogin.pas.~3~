@@ -1,0 +1,51 @@
+unit TelaLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB ,Data.Win.ADODB, TelaCadastroLogin;
+
+type
+  TForm1 = class(TForm)
+    lbNomeUsuario: TLabel;
+    lb_Senha: TLabel;
+    edit_Nome: TEdit;
+    edit_Senha: TEdit;
+    Button1: TButton;
+    btn_Cadastro: TButton;
+    ADOQuery1: TADOQuery;
+    ADOConnection1: TADOConnection;
+    procedure FormShow(Sender: TObject);
+    procedure btn_CadastroClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.btn_CadastroClick(Sender: TObject);
+begin
+//          TelaCadastro := TelaCadastro.Create(Application);
+          TelaCadastro.ShowModal;
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+  var conexao : String;
+  //SetLength(conexao, 400);
+  conexao := 'Provider=SQLNCLI11.1;Integrated Security=SSPI;Persist Security Info=False;User ID="";Initial Catalog=projCrud;Data Source=MARCOS-PC\SQLEXPRESS;Initial File Name="";Server SPN=""';
+
+  ADOConnection1.ConnectionString := conexao;
+  ADOConnection1.Connected := true;
+
+end;
+
+end.

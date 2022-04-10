@@ -1,0 +1,16 @@
+program Project1;
+
+uses
+  Vcl.Forms,
+  TelaLogin in 'TelaLogin.pas' {Form1},
+  TelaCadastroLogin in 'TelaCadastroLogin.pas' {TelaCadastro};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TTelaCadastro, TelaCadastro);
+  Application.Run;
+end.
