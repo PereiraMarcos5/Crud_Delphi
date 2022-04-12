@@ -17,9 +17,6 @@ type
     btn_Cadastro: TButton;
     Qaux: TADOQuery;
     ADOConnection1: TADOConnection;
-    SQLDataSet1: TSQLDataSet;
-    DataSetProvider1: TDataSetProvider;
-    ClientDataSet1: TClientDataSet;
     procedure FormShow(Sender: TObject);
     procedure btn_CadastroClick(Sender: TObject);
     procedure btn_EntrarClick(Sender: TObject);

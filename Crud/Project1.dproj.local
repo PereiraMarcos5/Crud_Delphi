@@ -10,9 +10,9 @@
     <Transaction>2022/04/02 13:22:38.000.342,=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.pas</Transaction>
     <Transaction>2022/04/02 13:22:50.000.132,C:\Users\marco\OneDrive\Delphi\Crud\Unit2.dfm=C:\Users\marco\OneDrive\Delphi\Crud\TelaCadastroLogin.dfm</Transaction>
     <Transaction>2022/04/02 13:22:50.000.132,C:\Users\marco\OneDrive\Delphi\Crud\Unit2.pas=C:\Users\marco\OneDrive\Delphi\Crud\TelaCadastroLogin.pas</Transaction>
-    <Transaction>2022/04/04 23:34:57.693,=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.pas</Transaction>
-    <Transaction>2022/04/04 23:35:42.448,C:\Users\marco\OneDrive\Delphi\Crud\Principal.dfm=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.dfm</Transaction>
-    <Transaction>2022/04/04 23:35:42.448,C:\Users\marco\OneDrive\Delphi\Crud\Principal.pas=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.pas</Transaction>
+    <Transaction>2022/04/04 23:34:57.000.693,=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.pas</Transaction>
+    <Transaction>2022/04/04 23:35:42.000.448,C:\Users\marco\OneDrive\Delphi\Crud\Principal.pas=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.pas</Transaction>
+    <Transaction>2022/04/04 23:35:42.000.448,C:\Users\marco\OneDrive\Delphi\Crud\Principal.dfm=C:\Users\marco\OneDrive\Delphi\Crud\Unit2.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="TelaLogin.pas"/>

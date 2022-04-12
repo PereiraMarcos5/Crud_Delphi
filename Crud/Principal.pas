@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.ExtCtrls, Data.FMTBcd, Data.DB, Data.SqlExpr, Data.Win.ADODB;
+  Vcl.ExtCtrls, Data.FMTBcd, Data.DB, Data.SqlExpr, Data.Win.ADODB, Vcl.Grids,
+  Vcl.DBGrids;
 
 type
   TTelaPrincipal = class(TForm)
@@ -13,7 +14,6 @@ type
     pg_Vendas: TTabSheet;
     pg_Produtos: TTabSheet;
     pg_Clientes: TTabSheet;
-    Panel1: TPanel;
     lb_NomeCliente: TLabel;
     lb_IdadeCliente: TLabel;
     lb_Cpf: TLabel;
@@ -28,8 +28,21 @@ type
     edit_Numero: TEdit;
     ADOConnection1: TADOConnection;
     ADOQuery1: TADOQuery;
-    Button1: TButton;
-    procedure Button1Click(Sender: TObject);
+    btn_Salvar: TButton;
+    DBGrid1: TDBGrid;
+    ADOQuery2: TADOQuery;
+    DataSource1: TDataSource;
+    TPanel1: TPanel;
+    btn_Apagar: TButton;
+    Label1: TLabel;
+    edit_Cidade: TEdit;
+    Label2: TLabel;
+    cb_Estado: TComboBox;
+    procedure btn_SalvarClick(Sender: TObject);
+    procedure edit_NumeroKeyPress(Sender: TObject; var Key: Char);
+    procedure btn_ApagarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+//    procedure DBGrid1CellClick(Column: TColumn);
   private
     { Private declarations }
   public
@@ -45,23 +58,64 @@ implementation
 
 
 
-procedure TTelaPrincipal.Button1Click(Sender: TObject);
+procedure TTelaPrincipal.btn_ApagarClick(Sender: TObject);
+var id_Cliente : integer;
 begin
-  ADOQuery1.SQL.Text := 'INSERT INTO cliente(nome_Cliente, cpf, cep, endereço, numero, idade) VALUES(:nome_Cliente, :cpf, :cep, :endereço, :numero, :idade);)';
+    id_Cliente := StrToInt( InputBox('id_Cliente','Selecione: ', '4'));
+
+ with AdoQuery2 do
+ begin
+   if ADOQuery2.Locate('id_Cliente', id_Cliente, []) = true then
+   begin
+           ADOQuery2.Delete;
+           showmessage('Excluido com sucesso');
+   end
+
+   else
+   begin
+           showmessage('Excluido com sucesso');
+   end;
+
+ end;
+end;
+
+procedure TTelaPrincipal.btn_SalvarClick(Sender: TObject);
+begin
+  ADOQuery1.Close;
+  ADOQuery1.SQL.Text := 'INSERT INTO cliente(nome_Cliente, cpf, cep, endereço, numero, idade, cidade, estado) VALUES(:nome_Cliente, :cpf, :cep, :endereço, :numero, :idade, :cidade, :estado)';
   ADOQuery1.Parameters.ParamByName('nome_Cliente').Value := ed_NomeCliente.Text;
   ADOQuery1.Parameters.ParamByName('cpf').Value := medit_Cpf.Text;
   ADOQuery1.Parameters.ParamByName('cep').Value := medit_Cep.Text;
   ADOQuery1.Parameters.ParamByName('endereço').Value := edit_Endereco.Text;
   ADOQuery1.Parameters.ParamByName('numero').Value := edit_Numero.Text;
   ADOQuery1.Parameters.ParamByName('idade').Value := edit_Idade.Text;
+  ADOQuery1.Parameters.ParamByName('cidade').Value := edit_Cidade.Text;
+  ADOQuery1.Parameters.ParamByName('estado').Value := cb_Estado.Text;
+
+
 
   try
-         Qaux.ExecSQL;
+         ADOQuery1.ExecSQL;
          ShowMessage('Cliente cadastrado com Sucesso!');
-  Except
+  Except                            
           ShowMessage('Ocorreu algum erro!');
-
   end;
+
+end;
+
+
+
+procedure TTelaPrincipal.edit_NumeroKeyPress(Sender: TObject; var Key: Char);
+begin
+if ((key in ['0'..'9'] = false) and (word(key) <> vk_back)) then
+ key := #0;
+end;
+
+procedure TTelaPrincipal.FormShow(Sender: TObject);
+begin
+    //  ADOConnection1.ConnectionString := 'Provider=SQLNCLI11.1;Integrated Security=SSPI;Persist Security Info=False;User ID="";Initial Catalog=projCrud;Data Source=MARCOS-PC\SQLEXPRESS;Initial File Name="";Server SPN="";';
+    //  ADOConnection1.Connected := true;
+
 end;
 
 end.

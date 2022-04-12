@@ -73,19 +73,4 @@ object Login: TLogin
     Left = 232
     Top = 8
   end
-  object SQLDataSet1: TSQLDataSet
-    Params = <>
-    Left = 176
-    Top = 8
-  end
-  object DataSetProvider1: TDataSetProvider
-    Left = 144
-    Top = 8
-  end
-  object ClientDataSet1: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 112
-    Top = 8
-  end
 end
