@@ -56,31 +56,21 @@ implementation
 
 {$R *.dfm}
 
+uses TelaLogin;
+
 
 
 procedure TTelaPrincipal.btn_ApagarClick(Sender: TObject);
-var id_Cliente : integer;
-begin
-    id_Cliente := StrToInt( InputBox('id_Cliente','Selecione: ', '4'));
-
- with AdoQuery2 do
- begin
-   if ADOQuery2.Locate('id_Cliente', id_Cliente, []) = true then
    begin
-           ADOQuery2.Delete;
-           showmessage('Excluido com sucesso');
-   end
-
-   else
-   begin
+     DBGrid1.DataSource.DataSet.Delete;
            showmessage('Excluido com sucesso');
    end;
 
- end;
-end;
-
 procedure TTelaPrincipal.btn_SalvarClick(Sender: TObject);
+
+
 begin
+  var funcionou := false;
   ADOQuery1.Close;
   ADOQuery1.SQL.Text := 'INSERT INTO cliente(nome_Cliente, cpf, cep, endereço, numero, idade, cidade, estado) VALUES(:nome_Cliente, :cpf, :cep, :endereço, :numero, :idade, :cidade, :estado)';
   ADOQuery1.Parameters.ParamByName('nome_Cliente').Value := ed_NomeCliente.Text;
@@ -97,9 +87,14 @@ begin
   try
          ADOQuery1.ExecSQL;
          ShowMessage('Cliente cadastrado com Sucesso!');
-  Except                            
+       //  DBGrid1.Refresh;
+
+  Except
           ShowMessage('Ocorreu algum erro!');
   end;
+
+
+
 
 end;
 

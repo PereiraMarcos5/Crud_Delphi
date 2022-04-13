@@ -39,6 +39,8 @@ begin
           TelaCadastro.ShowModal;
 end;
 
+
+
 procedure TLogin.btn_EntrarClick(Sender: TObject);
 begin
       Qaux.Close;
