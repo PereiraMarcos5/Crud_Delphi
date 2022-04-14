@@ -38,10 +38,28 @@ type
     edit_Cidade: TEdit;
     Label2: TLabel;
     cb_Estado: TComboBox;
+    DBGrid2: TDBGrid;
+    ADOQueryProdIns: TADOQuery;
+    ADOQueryProdSel: TADOQuery;
+    DataSource2: TDataSource;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    edit_NomeProd: TEdit;
+    cb_Un: TComboBox;
+    edit_Quant: TEdit;
+    edit_Preço: TEdit;
+    edit_Descricao: TEdit;
+    btn_SalvarProd: TButton;
+    btn_ApagarProd: TButton;
     procedure btn_SalvarClick(Sender: TObject);
     procedure edit_NumeroKeyPress(Sender: TObject; var Key: Char);
     procedure btn_ApagarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btn_SalvarProdClick(Sender: TObject);
+    procedure btn_ApagarProdClick(Sender: TObject);
 //    procedure DBGrid1CellClick(Column: TColumn);
   private
     { Private declarations }
@@ -66,6 +84,14 @@ procedure TTelaPrincipal.btn_ApagarClick(Sender: TObject);
            showmessage('Excluido com sucesso');
    end;
 
+procedure TTelaPrincipal.btn_ApagarProdClick(Sender: TObject);
+begin
+        begin
+     DBGrid2.DataSource.DataSet.Delete;
+           showmessage('Excluido com sucesso');
+   end;
+end;
+
 procedure TTelaPrincipal.btn_SalvarClick(Sender: TObject);
 
 
@@ -87,18 +113,45 @@ begin
   try
          ADOQuery1.ExecSQL;
          ShowMessage('Cliente cadastrado com Sucesso!');
-       //  DBGrid1.Refresh;
+
+
 
   Except
           ShowMessage('Ocorreu algum erro!');
   end;
 
 
+ // if funcionou = true then
+ // begin
+    //ADOQuery2.Refresh;
+   //DataSource1.DataSet.Refresh;
+ //end;
 
 
 end;
 
 
+
+procedure TTelaPrincipal.btn_SalvarProdClick(Sender: TObject);
+begin
+
+  ADOQueryProdIns.Close;
+  ADOQueryProdIns.SQL.Text := 'INSERT INTO produtos(nome_Prod, unidade, quantidade, preco, descricao) VALUES(:nome_Prod, :unidade, :quantidade, :preco, :descricao)';
+  ADOQueryProdIns.Parameters.ParamByName('nome_Prod').Value := edit_NomeProd.Text;
+  ADOQueryProdIns.Parameters.ParamByName('unidade').Value := cb_Un.Text;
+  ADOQueryProdIns.Parameters.ParamByName('quantidade').Value := edit_Quant.Text;
+  ADOQueryProdIns.Parameters.ParamByName('preco').Value := edit_Preço.Text;
+  ADOQueryProdIns.Parameters.ParamByName('descricao').Value := edit_Descricao.Text;
+
+    try
+         ADOQueryProdIns.ExecSQL;
+         ShowMessage('Produto cadastrado com Sucesso!');
+
+
+  Except
+          ShowMessage('Ocorreu algum erro!');
+  end;
+end;
 
 procedure TTelaPrincipal.edit_NumeroKeyPress(Sender: TObject; var Key: Char);
 begin
