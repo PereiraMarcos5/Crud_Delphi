@@ -103,7 +103,6 @@
           TitleFont.Height = -12
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
-          OnCellClick = DBGrid1CellClick
         end
       end
       object ed_NomeCliente: TEdit
@@ -214,15 +213,6 @@
           'SE'
           'TO'
           'DF')
-      end
-      object btn_Atualizar: TButton
-        Left = 353
-        Top = 400
-        Width = 85
-        Height = 57
-        Caption = 'Atualizar'
-        TabOrder = 11
-        OnClick = btn_AtualizarClick
       end
     end
     object pg_Produtos: TTabSheet

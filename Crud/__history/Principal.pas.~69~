@@ -113,21 +113,10 @@ ADOQuery1.SQL.add('update cliente set nome_Cliente = :nome_Cliente, cpf = :cpf, 
   ADOQuery1.Parameters.ParamByName('idade').Value := edit_Idade.Text;
   ADOQuery1.Parameters.ParamByName('cidade').Value := edit_Cidade.Text;
   ADOQuery1.Parameters.ParamByName('estado').Value := cb_Estado.Text;
+ADOQuery1.ExecSQL;
 
-try
-
-         ADOQuery1.ExecSQL;
-
-         ShowMessage('Cliente atualizado com Sucesso!');
-
-         ADOQuery2.ExecSQL;
-         ADOQuery2.Active := false;
-         ADOQuery2.Active := true;
-
-  Except
-          ShowMessage('Ocorreu algum erro!');
-  end;
-
+ ADOQuery1.Active := false;
+ ADOQuery1.Active := true;
 end;
 
 procedure TTelaPrincipal.btn_SalvarClick(Sender: TObject);

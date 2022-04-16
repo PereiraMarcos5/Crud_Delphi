@@ -222,7 +222,6 @@
         Height = 57
         Caption = 'Atualizar'
         TabOrder = 11
-        OnClick = btn_AtualizarClick
       end
     end
     object pg_Produtos: TTabSheet

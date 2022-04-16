@@ -104,7 +104,7 @@ ADOQuery1.SQL.clear;
 //Id_Cliente := DBGrid1.Fields[0].Value;
 //Id_Cliente := DBGrid1.Fields[0].Value;
 ADOQuery1.SQL.add('update cliente set nome_Cliente = :nome_Cliente, cpf = :cpf, cep = :cep, endereço = :endereço, numero = :numero, idade = :idade, cidade = :cidade, estado = :estado WHERE id_Cliente = :Id_Cliente');
-  ADOQuery1.Parameters.ParamByName('Id_Cliente').Value := DBGrid1.Fields[0].Value;
+ //ADOQuery1.Parameters.ParamByName('Id_Cliente').Value := DBGrid1.Fields[0].Value;
   ADOQuery1.Parameters.ParamByName('nome_Cliente').Value := ed_NomeCliente.Text;
   ADOQuery1.Parameters.ParamByName('cpf').Value := medit_Cpf.Text;
   ADOQuery1.Parameters.ParamByName('cep').Value := medit_Cep.Text;
@@ -113,21 +113,10 @@ ADOQuery1.SQL.add('update cliente set nome_Cliente = :nome_Cliente, cpf = :cpf, 
   ADOQuery1.Parameters.ParamByName('idade').Value := edit_Idade.Text;
   ADOQuery1.Parameters.ParamByName('cidade').Value := edit_Cidade.Text;
   ADOQuery1.Parameters.ParamByName('estado').Value := cb_Estado.Text;
+ADOQuery1.ExecSQL;
 
-try
-
-         ADOQuery1.ExecSQL;
-
-         ShowMessage('Cliente atualizado com Sucesso!');
-
-         ADOQuery2.ExecSQL;
-         ADOQuery2.Active := false;
-         ADOQuery2.Active := true;
-
-  Except
-          ShowMessage('Ocorreu algum erro!');
-  end;
-
+ ADOQuery1.Active := false;
+ ADOQuery1.Active := true;
 end;
 
 procedure TTelaPrincipal.btn_SalvarClick(Sender: TObject);

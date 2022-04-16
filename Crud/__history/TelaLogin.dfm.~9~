@@ -69,7 +69,6 @@ object Login: TLogin
       'Provider=SQLNCLI11.1;Integrated Security=SSPI;Persist Security I' +
       'nfo=False;User ID="";Initial Catalog=projCrud;Data Source=MARCOS' +
       '-PC\SQLEXPRESS;Initial File Name="";Server SPN="";'
-    LoginPrompt = False
     Provider = 'SQLNCLI11.1'
     Left = 232
     Top = 8
