@@ -19,7 +19,7 @@
     Top = 0
     Width = 693
     Height = 504
-    ActivePage = pg_Clientes
+    ActivePage = pg_Vendas
     Align = alClient
     TabOrder = 0
     object pg_Vendas: TTabSheet
@@ -30,56 +30,56 @@
       ImageIndex = 1
       object lb_NomeCliente: TLabel
         Left = 56
-        Top = 200
+        Top = 216
         Width = 93
         Height = 15
         Caption = 'Nome do Cliente:'
       end
       object lb_IdadeCliente: TLabel
-        Left = 559
-        Top = 200
+        Left = 558
+        Top = 216
         Width = 32
         Height = 15
         Caption = 'Idade:'
       end
       object lb_Cpf: TLabel
         Left = 376
-        Top = 200
+        Top = 216
         Width = 24
         Height = 15
         Caption = 'CPF:'
       end
       object lb_Cep: TLabel
         Left = 56
-        Top = 266
+        Top = 278
         Width = 24
         Height = 15
         Caption = 'Cep:'
       end
       object lb_Endereco: TLabel
         Left = 261
-        Top = 266
+        Top = 278
         Width = 52
         Height = 15
         Caption = 'Endere'#231'o:'
       end
       object lb_Numero: TLabel
         Left = 558
-        Top = 266
+        Top = 278
         Width = 47
         Height = 15
         Caption = 'Numero:'
       end
       object Label1: TLabel
         Left = 56
-        Top = 336
+        Top = 328
         Width = 40
         Height = 15
         Caption = 'Cidade:'
       end
       object Label2: TLabel
-        Left = 346
-        Top = 336
+        Left = 322
+        Top = 328
         Width = 38
         Height = 15
         Caption = 'Estado:'
@@ -88,14 +88,14 @@
         Left = 0
         Top = 0
         Width = 689
-        Height = 185
+        Height = 194
         Caption = 'TPanel1'
         TabOrder = 0
         object DBGrid1: TDBGrid
           Left = -4
           Top = 0
           Width = 689
-          Height = 177
+          Height = 194
           DataSource = DataSource1
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
@@ -108,21 +108,21 @@
       end
       object ed_NomeCliente: TEdit
         Left = 56
-        Top = 221
+        Top = 237
         Width = 257
         Height = 23
         TabOrder = 1
       end
       object edit_Idade: TEdit
-        Left = 559
-        Top = 221
+        Left = 558
+        Top = 237
         Width = 47
         Height = 23
         TabOrder = 3
       end
       object medit_Cpf: TMaskEdit
         Left = 376
-        Top = 221
+        Top = 237
         Width = 105
         Height = 23
         EditMask = '!999.999.999-99;0;'
@@ -132,7 +132,7 @@
       end
       object medit_Cep: TMaskEdit
         Left = 56
-        Top = 287
+        Top = 299
         Width = 144
         Height = 23
         EditMask = '!99999-999;0;'
@@ -142,49 +142,51 @@
       end
       object edit_Endereco: TEdit
         Left = 261
-        Top = 287
+        Top = 299
         Width = 265
         Height = 23
         TabOrder = 5
       end
       object edit_Numero: TEdit
         Left = 558
-        Top = 287
+        Top = 299
         Width = 47
         Height = 23
         TabOrder = 6
         OnKeyPress = edit_NumeroKeyPress
       end
       object btn_Salvar: TButton
-        Left = 444
-        Top = 400
-        Width = 85
-        Height = 57
+        Left = 598
+        Top = 423
+        Width = 75
+        Height = 48
         Caption = 'Salvar'
         TabOrder = 9
         OnClick = btn_SalvarClick
       end
       object btn_Apagar: TButton
-        Left = 535
-        Top = 400
-        Width = 93
-        Height = 57
+        Left = 436
+        Top = 423
+        Width = 75
+        Height = 48
         Caption = 'Apagar'
         TabOrder = 10
         OnClick = btn_ApagarClick
       end
       object edit_Cidade: TEdit
         Left = 56
-        Top = 357
+        Top = 349
         Width = 217
         Height = 23
         TabOrder = 7
       end
       object cb_Estado: TComboBox
-        Left = 346
-        Top = 357
+        Left = 322
+        Top = 349
         Width = 96
         Height = 23
+        AutoDropDown = True
+        Style = csDropDownList
         TabOrder = 8
         Items.Strings = (
           'AC'
@@ -216,10 +218,10 @@
           'DF')
       end
       object btn_Atualizar: TButton
-        Left = 353
-        Top = 400
-        Width = 85
-        Height = 57
+        Left = 517
+        Top = 423
+        Width = 75
+        Height = 48
         Caption = 'Atualizar'
         TabOrder = 11
         OnClick = btn_AtualizarClick
@@ -264,10 +266,10 @@
         Caption = 'Descri'#231#227'o:'
       end
       object DBGrid2: TDBGrid
-        Left = 3
+        Left = -4
         Top = 0
         Width = 679
-        Height = 209
+        Height = 193
         DataSource = DataSource2
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
@@ -323,6 +325,7 @@
         Top = 269
         Width = 65
         Height = 23
+        Style = csDropDownList
         DragMode = dmAutomatic
         TabOrder = 2
         Items.Strings = (
@@ -347,11 +350,11 @@
         Left = 48
         Top = 330
         Width = 593
-        Height = 55
+        Height = 23
         TabOrder = 5
       end
       object btn_SalvarProd: TButton
-        Left = 494
+        Left = 575
         Top = 423
         Width = 75
         Height = 48
@@ -360,13 +363,22 @@
         OnClick = btn_SalvarProdClick
       end
       object btn_ApagarProd: TButton
-        Left = 575
+        Left = 413
         Top = 423
         Width = 75
         Height = 48
         Caption = 'Apagar'
         TabOrder = 7
         OnClick = btn_ApagarProdClick
+      end
+      object btn_AtualizarProd: TButton
+        Left = 494
+        Top = 423
+        Width = 75
+        Height = 48
+        Caption = 'Atualizar'
+        TabOrder = 8
+        OnClick = btn_AtualizarProdClick
       end
     end
   end

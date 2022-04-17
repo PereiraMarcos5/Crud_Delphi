@@ -1,4 +1,5 @@
 object Login: TLogin
+  AlignWithMargins = True
   Left = 0
   Top = 0
   Caption = 'TelaLogin'
@@ -10,7 +11,9 @@ object Login: TLogin
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OldCreateOrder = True
   OnShow = FormShow
+  PixelsPerInch = 96
   TextHeight = 15
   object lbNomeUsuario: TLabel
     Left = 48
@@ -42,16 +45,16 @@ object Login: TLogin
   end
   object btn_Entrar: TButton
     Left = 192
-    Top = 200
+    Top = 201
     Width = 75
-    Height = 41
+    Height = 39
     Caption = 'Entrar'
     TabOrder = 2
     OnClick = btn_EntrarClick
   end
   object btn_Cadastro: TButton
     Left = 111
-    Top = 200
+    Top = 201
     Width = 75
     Height = 39
     Caption = 'Cadastre-se'

@@ -55,6 +55,7 @@ type
     btn_SalvarProd: TButton;
     btn_ApagarProd: TButton;
     btn_Atualizar: TButton;
+    btn_AtualizarProd: TButton;
     procedure btn_SalvarClick(Sender: TObject);
     procedure edit_NumeroKeyPress(Sender: TObject; var Key: Char);
     procedure btn_ApagarClick(Sender: TObject);
@@ -63,6 +64,7 @@ type
     procedure btn_ApagarProdClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure btn_AtualizarClick(Sender: TObject);
+    procedure btn_AtualizarProdClick(Sender: TObject);
 
 //    procedure DBGrid1CellClick(Column: TColumn);
   private
@@ -97,12 +99,10 @@ begin
 end;
 
 procedure TTelaPrincipal.btn_AtualizarClick(Sender: TObject);
-var Id_Cliente : Integer;
+//var Id_Cliente : Integer;
 begin
 ADOQuery1.close;
 ADOQuery1.SQL.clear;
-//Id_Cliente := DBGrid1.Fields[0].Value;
-//Id_Cliente := DBGrid1.Fields[0].Value;
 ADOQuery1.SQL.add('update cliente set nome_Cliente = :nome_Cliente, cpf = :cpf, cep = :cep, endereço = :endereço, numero = :numero, idade = :idade, cidade = :cidade, estado = :estado WHERE id_Cliente = :Id_Cliente');
   ADOQuery1.Parameters.ParamByName('Id_Cliente').Value := DBGrid1.Fields[0].Value;
   ADOQuery1.Parameters.ParamByName('nome_Cliente').Value := ed_NomeCliente.Text;
@@ -123,6 +123,34 @@ try
          ADOQuery2.ExecSQL;
          ADOQuery2.Active := false;
          ADOQuery2.Active := true;
+
+  Except
+          ShowMessage('Ocorreu algum erro!');
+  end;
+
+end;
+
+procedure TTelaPrincipal.btn_AtualizarProdClick(Sender: TObject);
+begin
+ADOQueryProdIns.close;
+ADOQueryProdIns.SQL.clear;
+ADOQueryProdIns.SQL.add('update produtos set nome_Prod = :nome_Prod, unidade = :unidade, quantidade = :quantidade, preco = :preco, descricao = :descricao WHERE id_Prod = :id_Prod');
+  ADOQueryProdIns.Parameters.ParamByName('id_Prod').Value := DBGrid2.Fields[0].Value;
+  ADOQueryProdIns.Parameters.ParamByName('nome_Prod').Value := edit_NomeProd.Text;
+  ADOQueryProdIns.Parameters.ParamByName('unidade').Value := cb_Un.Text;
+  ADOQueryProdIns.Parameters.ParamByName('quantidade').Value := edit_Quant.Text;
+  ADOQueryProdIns.Parameters.ParamByName('preco').Value := edit_Preço.Text;
+  ADOQueryProdIns.Parameters.ParamByName('descricao').Value := edit_Descricao.Text;
+
+try
+
+         ADOQueryProdIns.ExecSQL;
+
+         ShowMessage('Cliente atualizado com Sucesso!');
+
+         ADOQueryProdSel.ExecSQL;
+         ADOQueryProdSel.Active := false;
+         ADOQueryProdSel.Active := true;
 
   Except
           ShowMessage('Ocorreu algum erro!');
