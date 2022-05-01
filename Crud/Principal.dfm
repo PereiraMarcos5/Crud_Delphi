@@ -3,7 +3,7 @@
   Top = 0
   Caption = 'TelaPrincipal'
   ClientHeight = 504
-  ClientWidth = 693
+  ClientWidth = 694
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,11 +17,12 @@
   object conj_Pag: TPageControl
     Left = 0
     Top = 0
-    Width = 693
+    Width = 694
     Height = 504
     ActivePage = pg_Vendas
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 693
     object pg_Vendas: TTabSheet
       Caption = 'Vendas'
       object Label9: TLabel
@@ -69,7 +70,7 @@
         Left = 32
         Top = 101
         Width = 617
-        Height = 145
+        Height = 206
         DataSource = DataSource2
         TabOrder = 2
         TitleFont.Charset = DEFAULT_CHARSET
@@ -80,17 +81,17 @@
         OnCellClick = DBGrid3CellClick
       end
       object Button1: TButton
-        Left = 520
-        Top = 264
-        Width = 129
-        Height = 41
+        Left = 496
+        Top = 313
+        Width = 153
+        Height = 56
         Caption = 'Concluir Venda'
         TabOrder = 3
         OnClick = Button1Click
       end
       object edit_produtoVenda: TEdit
-        Left = 40
-        Top = 256
+        Left = 32
+        Top = 313
         Width = 121
         Height = 23
         Enabled = False
