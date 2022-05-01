@@ -1,5 +1,4 @@
 object Login: TLogin
-  AlignWithMargins = True
   Left = 0
   Top = 0
   Caption = 'TelaLogin'
@@ -48,6 +47,7 @@ object Login: TLogin
     Top = 201
     Width = 75
     Height = 39
+    Cursor = crHandPoint
     Caption = 'Entrar'
     TabOrder = 2
     OnClick = btn_EntrarClick
@@ -57,6 +57,7 @@ object Login: TLogin
     Top = 201
     Width = 75
     Height = 39
+    Cursor = crHandPoint
     Caption = 'Cadastre-se'
     TabOrder = 3
     OnClick = btn_CadastroClick

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Mask,
   Vcl.ExtCtrls, Data.FMTBcd, Data.DB, Data.SqlExpr, Data.Win.ADODB, Vcl.Grids,
-  Vcl.DBGrids;
+  Vcl.DBGrids, Vcl.DBCtrls;
 
 type
   TTelaPrincipal = class(TForm)
@@ -56,6 +56,17 @@ type
     btn_ApagarProd: TButton;
     btn_Atualizar: TButton;
     btn_AtualizarProd: TButton;
+    Label9: TLabel;
+    Label10: TLabel;
+    DataSource3: TDataSource;
+    ADOQuery3: TADOQuery;
+    tdbCliente: TDBLookupComboBox;
+    ADOQuery4: TADOQuery;
+    meditcpfcliente: TEdit;
+    DBGrid3: TDBGrid;
+    Label8: TLabel;
+    Button1: TButton;
+    edit_produtoVenda: TEdit;
     procedure btn_SalvarClick(Sender: TObject);
     procedure edit_NumeroKeyPress(Sender: TObject; var Key: Char);
     procedure btn_ApagarClick(Sender: TObject);
@@ -65,6 +76,10 @@ type
     procedure DBGrid1CellClick(Column: TColumn);
     procedure btn_AtualizarClick(Sender: TObject);
     procedure btn_AtualizarProdClick(Sender: TObject);
+    procedure tdbClienteExit(Sender: TObject);
+    procedure DBGrid2CellClick(Column: TColumn);
+    procedure Button1Click(Sender: TObject);
+    procedure DBGrid3CellClick(Column: TColumn);
 
 //    procedure DBGrid1CellClick(Column: TColumn);
   private
@@ -75,6 +90,10 @@ type
 
 var
   TelaPrincipal: TTelaPrincipal;
+  var nomeProdutoVenda : string;
+  var nomeClienteVenda : string;
+  var produto_selecionado : Boolean;
+  var cliente_selecionado : Boolean;
 
 implementation
 
@@ -146,7 +165,7 @@ try
 
          ADOQueryProdIns.ExecSQL;
 
-         ShowMessage('Cliente atualizado com Sucesso!');
+         ShowMessage('Produto atualizado com Sucesso!');
 
          ADOQueryProdSel.ExecSQL;
          ADOQueryProdSel.Active := false;
@@ -226,6 +245,36 @@ begin
   end;
 end;
 
+procedure TTelaPrincipal.DBGrid3CellClick(Column: TColumn);
+begin
+      produto_selecionado := true;
+      nomeClienteVenda := (tdbCliente.Text);
+      nomeProdutoVenda := (DBGrid3.Fields[1].Value);
+      edit_produtoVenda.Text := nomeProdutoVenda;
+end;
+
+
+procedure TTelaPrincipal.Button1Click(Sender: TObject);
+begin
+ if cliente_selecionado = true then
+ begin
+    if produto_selecionado = true then
+    begin
+      ShowMessage('Venda de: ' + TrimRight(nomeProdutoVenda) + ' para ' + tdbCliente.Text + ' concluida com sucesso');
+      TelaPrincipal.Close;
+    end
+    else
+    begin
+      ShowMessage('Selecione um produto');
+    end;
+ end
+else
+  begin
+      ShowMessage('Selecione um Cliente');
+  end;
+
+end;
+
 procedure TTelaPrincipal.DBGrid1CellClick(Column: TColumn);
 begin
     ed_NomeCliente.Text := DBGrid1.Fields[1].Value;
@@ -238,6 +287,31 @@ begin
     cb_Estado.Text := DBGrid1.Fields[8].Value;
 end;
 
+procedure TTelaPrincipal.DBGrid2CellClick(Column: TColumn);
+begin
+    edit_NomeProd.Text := DBGrid2.Fields[1].Value;
+    cb_Un.Text := DBGrid2.Fields[2].Value;
+    edit_Quant.Text := DBGrid2.Fields[3].Value;
+    edit_Preço.Text := DBGrid2.Fields[4].Value;
+    edit_Descricao.Text := DBGrid2.Fields[5].Value;
+end;
+
+
+
+procedure TTelaPrincipal.tdbClienteExit(Sender: TObject);
+begin
+cliente_selecionado := true;
+ADOQuery4.SQL.ADD('SELECT * FROM cliente');
+
+ADOQuery4.CLOSE;
+ADOQuery4.SQL.CLEAR;
+ADOQuery4.SQL.ADD('SELECT cpf FROM cliente WHERE nome_Cliente = :nome_Cliente');
+ADOQuery4.Parameters.ParamByName('nome_Cliente').Value := tdbCliente.Text;
+ADOQuery4.OPEN;
+
+meditcpfcliente.Text:= ADOQuery4.FieldByName('cpf').AsString;
+end;
+
 procedure TTelaPrincipal.edit_NumeroKeyPress(Sender: TObject; var Key: Char);
 begin
 if ((key in ['0'..'9'] = false) and (word(key) <> vk_back)) then
@@ -248,8 +322,11 @@ end;
 
 procedure TTelaPrincipal.FormShow(Sender: TObject);
 begin
+       cliente_selecionado := false;
+       produto_selecionado := false;
       //ADOConnection1.ConnectionString := 'Provider=SQLNCLI11.1;Integrated Security=SSPI;Persist Security Info=False;User ID="";Initial Catalog=projCrud;Data Source=MARCOS-PC\SQLEXPRESS;Initial File Name="";Server SPN=""';
       //ADOConnection1.Connected := true;
+
 end;
 
 end.

@@ -24,6 +24,78 @@
     TabOrder = 0
     object pg_Vendas: TTabSheet
       Caption = 'Vendas'
+      object Label9: TLabel
+        Left = 32
+        Top = 24
+        Width = 93
+        Height = 15
+        Caption = 'Nome do Cliente:'
+      end
+      object Label10: TLabel
+        Left = 292
+        Top = 24
+        Width = 24
+        Height = 15
+        Caption = 'CPF:'
+      end
+      object Label8: TLabel
+        Left = 32
+        Top = 88
+        Width = 46
+        Height = 15
+        Caption = 'Produto:'
+      end
+      object tdbCliente: TDBLookupComboBox
+        Left = 32
+        Top = 45
+        Width = 225
+        Height = 23
+        KeyField = 'nome_Cliente'
+        ListField = 'nome_Cliente'
+        ListFieldIndex = 1
+        ListSource = DataSource3
+        TabOrder = 0
+        OnExit = tdbClienteExit
+      end
+      object meditcpfcliente: TEdit
+        Left = 292
+        Top = 45
+        Width = 105
+        Height = 23
+        Enabled = False
+        TabOrder = 1
+      end
+      object DBGrid3: TDBGrid
+        Left = 32
+        Top = 101
+        Width = 617
+        Height = 145
+        DataSource = DataSource2
+        TabOrder = 2
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = []
+        OnCellClick = DBGrid3CellClick
+      end
+      object Button1: TButton
+        Left = 520
+        Top = 264
+        Width = 129
+        Height = 41
+        Caption = 'Concluir Venda'
+        TabOrder = 3
+        OnClick = Button1Click
+      end
+      object edit_produtoVenda: TEdit
+        Left = 40
+        Top = 256
+        Width = 121
+        Height = 23
+        Enabled = False
+        TabOrder = 4
+      end
     end
     object pg_Clientes: TTabSheet
       Caption = 'Clientes'
@@ -123,9 +195,9 @@
       object medit_Cpf: TMaskEdit
         Left = 376
         Top = 237
-        Width = 105
+        Width = 103
         Height = 23
-        EditMask = '!999.999.999-99;0;'
+        EditMask = '!999.999.999.99;0;'
         MaxLength = 14
         TabOrder = 2
         Text = ''
@@ -133,7 +205,7 @@
       object medit_Cep: TMaskEdit
         Left = 56
         Top = 299
-        Width = 144
+        Width = 140
         Height = 23
         EditMask = '!99999-999;0;'
         MaxLength = 9
@@ -277,6 +349,7 @@
         TitleFont.Height = -12
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
+        OnCellClick = DBGrid2CellClick
         Columns = <
           item
             Expanded = False
@@ -435,5 +508,34 @@
     DataSet = ADOQueryProdSel
     Left = 232
     Top = 424
+  end
+  object DataSource3: TDataSource
+    DataSet = ADOQuery3
+    Left = 340
+    Top = 410
+  end
+  object ADOQuery3: TADOQuery
+    Active = True
+    AutoCalcFields = False
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Filtered = True
+    Parameters = <>
+    Prepared = True
+    SQL.Strings = (
+      'SELECT (nome_Cliente) from cliente'
+      '')
+    Left = 388
+    Top = 410
+  end
+  object ADOQuery4: TADOQuery
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Filtered = True
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM cliente WHERE nome_Cliente = tdbCliente.Text')
+    Left = 436
+    Top = 410
   end
 end
